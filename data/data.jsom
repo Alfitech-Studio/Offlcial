@@ -1,0 +1,55 @@
+{
+  "studio": {
+    "name": "ALFITECH Studio",
+    "type": "Game & App Development Studio",
+    "description": "Studio pengembang game dan aplikasi digital."
+  },
+  "apps": [
+    {
+      "id": "senter",
+      "name": "Senter",
+      "packageName": "com.alfitech.flashlight",
+      "developer": "ALFITECH Studio",
+      "category": "Alat",
+      "status": "released",
+      "platform": "Android",
+      "version": "1.0.0",
+      "size": "5,6 MB",
+      "offline": true,
+      "requiresLogin": false,
+
+      "about": {
+        "title": "Tentang Senter",
+        "description": "Senter offline sederhana dengan 10 mode kedip.\n\nSenter adalah aplikasi flashlight sederhana yang dilengkapi dengan 10 mode kedip untuk berbagai kebutuhan pencahayaan.\n\nAplikasi ini dirancang agar ringan, cepat, dan mudah digunakan tanpa memerlukan koneksi internet."
+      },
+
+      "features": [
+        "Nyalakan dan matikan senter dengan satu sentuhan",
+        "10 mode kedip senter",
+        "Bekerja sepenuhnya offline",
+        "Tampilan sederhana dan mudah digunakan",
+        "Ringan dan hemat daya",
+        "Tidak memerlukan login"
+      ],
+
+      "suitableFor": [
+        "Keadaan darurat",
+        "Mati lampu",
+        "Aktivitas malam hari",
+        "Kebutuhan pencahayaan lainnya"
+      ],
+
+      "descriptionEnd": "Aplikasi ini cocok digunakan saat keadaan darurat, mati lampu, aktivitas malam hari, atau kebutuhan pencahayaan lainnya.",
+
+      "assets": {
+        "icon": "assets/apps/senter/icon.png",
+        "banner": "assets/apps/senter/banner.png",
+        "screenshots": []
+      },
+
+      "links": {
+        "apkpure": "https://apkpure.com/id/senter/com.alfitech.flashlight/download"
+      }
+    }
+  ]
+}
