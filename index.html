@@ -1,0 +1,1233 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALFITECH Studio — Official Website</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#e6fff9',
+              100: '#b3ffe6',
+              400: '#10b981',
+              500: '#059669',
+              600: '#047857',
+              900: '#022c22',
+              cyan: '#06b6d4',
+              violet: '#8b5cf6',
+              blue: '#3b82f6'
+            },
+            dark: {
+              base: '#030509',
+              surface: '#080d1a',
+              card: '#0f172a',
+              border: '#1e293b'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       GLOBAL STYLES & CYBER-FUTURISTIC CANVAS
+       ========================================================================== */
+    body {
+      background-color: #030509;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Cyber Grid Background Pattern */
+    .cyber-grid {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 40s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 80px; }
+    }
+
+    /* ==========================================================================
+       GLASSMORPHISM & GLOW EFFECTS
+       ========================================================================== */
+    .glass-header {
+      background: rgba(3, 5, 9, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(8, 13, 26, 0.8) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      transition: left 0.7s ease;
+      pointer-events: none;
+    }
+
+    .glass-card:hover::before {
+      left: 140%;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 12px 40px -10px rgba(16, 185, 129, 0.25), 0 0 20px rgba(6, 182, 212, 0.15);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ==========================================================================
+       3D ANIMATIONS & MOTION GRAPHICS
+       ========================================================================== */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+
+    /* Continuous Rotations */
+    .rotate-3d-slow {
+      animation: rotate3d 28s infinite linear;
+    }
+
+    .rotate-3d-reverse {
+      animation: rotate3dRev 22s infinite linear;
+    }
+
+    @keyframes rotate3d {
+      0% { transform: rotateX(15deg) rotateY(0deg) rotateZ(0deg); }
+      50% { transform: rotateX(30deg) rotateY(180deg) rotateZ(15deg); }
+      100% { transform: rotateX(15deg) rotateY(360deg) rotateZ(0deg); }
+    }
+
+    @keyframes rotate3dRev {
+      0% { transform: rotateX(-20deg) rotateY(360deg) rotateZ(0deg); }
+      50% { transform: rotateX(10deg) rotateY(180deg) rotateZ(-15deg); }
+      100% { transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg); }
+    }
+
+    /* Floating Animations */
+    .float-slow {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .float-reverse {
+      animation: floatReverse 6s ease-in-out infinite;
+    }
+
+    .float-fast {
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(6deg); }
+    }
+
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(20px) rotate(-6deg); }
+    }
+
+    /* Pulse & Glow Movement */
+    .pulse-glow {
+      animation: pulseGlow 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.25; filter: blur(50px); transform: scale(0.85); }
+      100% { opacity: 0.65; filter: blur(75px); transform: scale(1.15); }
+    }
+
+    /* Scanning Light Beam */
+    .scan-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #10b981, #06b6d4, transparent);
+      animation: scanBeam 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes scanBeam {
+      0% { top: 0%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* Pulse Core for Logo */
+    .logo-pulse-core {
+      animation: logoPulse 2.5s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 8px #10b981); }
+    }
+
+    .logo-ring-rotate {
+      animation: ringRotate 12s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes ringRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Reveal Animations on Scroll */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px; height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030509;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+
+    /* Fade Page Transitions */
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(15px) scale(0.99);
+    }
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-200 antialiased selection:bg-brand-400 selection:text-black">
+
+  <!-- BACKGROUND CYBER GRID & GLOW ORBS -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden cyber-grid opacity-70"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-brand-400/15 rounded-full pulse-glow"></div>
+    <div class="absolute top-1/3 -right-40 w-[32rem] h-[32rem] bg-brand-violet/15 rounded-full pulse-glow" style="animation-delay: -2s;"></div>
+    <div class="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-brand-cyan/15 rounded-full pulse-glow" style="animation-delay: -4s;"></div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-header transition-all duration-300 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      
+      <!-- LOGO ALFITECH STUDIO (PROFESSIONAL CYBER EMBLEM) -->
+      <a href="#" onclick="navigateToHome(event)" class="flex items-center gap-3.5 group">
+        <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-400 via-brand-cyan to-brand-violet p-[1.5px] shadow-lg shadow-brand-500/20 group-hover:shadow-brand-400/50 group-hover:scale-105 transition-all duration-300">
+          <div class="w-full h-full bg-dark-base rounded-[14px] flex items-center justify-center overflow-hidden relative">
+            
+            <!-- Dynamic Background Glow in Logo -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-400/20 to-brand-violet/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <!-- Ultra-Professional High-Tech Vector SVG Logo -->
+            <svg class="w-7 h-7 relative z-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer Rotating Tech Ring -->
+              <circle cx="50" cy="50" r="44" stroke="url(#logo-ring-grad)" stroke-width="2.5" stroke-dasharray="6 4" class="logo-ring-rotate" />
+              
+              <!-- 3D Geometric Emblem 'A' + 'T' Cyber Hybrid -->
+              <path d="M50 14L82 74H65L50 44L35 74H18L50 14Z" fill="url(#logo-body-grad)" />
+              <path d="M50 34L68 74H56L50 60L44 74H32L50 34Z" fill="url(#logo-inner-grad)" opacity="0.95" />
+              
+              <!-- Core Energy Node -->
+              <circle cx="50" cy="48" r="4.5" fill="#06b6d4" class="logo-pulse-core" />
+              <circle cx="50" cy="48" r="9" stroke="#10b981" stroke-width="1.5" opacity="0.6" class="logo-pulse-core" />
+
+              <!-- Cyber Tech Hex Accents -->
+              <path d="M50 78L60 84H40L50 78Z" fill="#8b5cf6" />
+              
+              <defs>
+                <linearGradient id="logo-ring-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10b981" />
+                  <stop offset="0.5" stop-color="#06b6d4" />
+                  <stop offset="1" stop-color="#8b5cf6" />
+                </linearGradient>
+                <linearGradient id="logo-body-grad" x1="18" y1="14" x2="82" y2="74" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#34d399" />
+                  <stop offset="0.5" stop-color="#06b6d4" />
+                  <stop offset="1" stop-color="#8b5cf6" />
+                </linearGradient>
+                <linearGradient id="logo-inner-grad" x1="32" y1="34" x2="68" y2="74" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#059669" />
+                  <stop offset="1" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="flex flex-col">
+          <span id="header-studio-name" class="font-black text-lg sm:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400 group-hover:from-brand-400 group-hover:to-brand-cyan transition-all duration-300">
+            ALFITECH Studio
+          </span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-400 -mt-1 opacity-90">Digital Experience</span>
+        </div>
+      </a>
+
+      <!-- NAVIGATION LINKS -->
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="#" onclick="navigateToHome(event)" id="nav-home" class="relative py-1 text-slate-300 hover:text-brand-400 transition-colors duration-200 group">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#" onclick="navigateToAbout(event)" id="nav-about" class="relative py-1 text-slate-300 hover:text-brand-400 transition-colors duration-200 group">
+          About
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        
+        <!-- LANGUAGE SWITCHER -->
+        <button onclick="toggleLanguage()" id="lang-btn" class="glass-pill px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:border-brand-400/50 transition-all flex items-center gap-1.5 shadow-sm hover:shadow-brand-500/20">
+          <span id="lang-indicator-en" class="text-brand-400 font-bold">EN</span>
+          <span class="text-slate-600">|</span>
+          <span id="lang-indicator-id" class="text-slate-400">ID</span>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER (DYNAMIC VIEWS) -->
+  <main id="app-content" class="flex-grow pt-24 pb-16 z-10">
+    <!-- Dynamic views render here via JS -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="glass-header border-t border-slate-800/80 mt-auto py-12 z-10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        
+        <!-- Brand Info -->
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-400 to-brand-cyan p-[1px]">
+              <div class="w-full h-full bg-dark-base rounded-[11px] flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 14L82 74H65L50 44L38 74H18L50 14Z" fill="#10b981" />
+                </svg>
+              </div>
+            </div>
+            <span id="footer-studio-name" class="font-bold text-base text-white">ALFITECH Studio</span>
+          </div>
+          <p id="footer-tagline" class="text-xs text-slate-400 max-w-sm">
+            Creating digital experiences with purpose.
+          </p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex items-center gap-6 text-xs text-slate-400 font-medium">
+          <a href="#" onclick="navigateToHome(event)" id="footer-nav-home" class="hover:text-brand-400 transition-colors">Home</a>
+          <a href="#" onclick="navigateToAbout(event)" id="footer-nav-about" class="hover:text-brand-400 transition-colors">About</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-xs text-slate-500">
+          &copy; <span id="footer-year">2026</span> <span id="footer-copy-name">ALFITECH Studio</span>. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL FOR SCREENSHOTS -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-slate-400 hover:text-white p-2.5 rounded-full glass-pill z-50 hover:scale-110 transition-transform">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <button onclick="prevLightboxImage()" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-3.5 rounded-full glass-pill z-50 hover:scale-110 transition-transform">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+
+    <div class="max-w-5xl max-h-[85vh] overflow-hidden rounded-3xl border border-slate-700/50 shadow-2xl">
+      <img id="lightbox-img" src="" alt="Screenshot Full View" class="max-w-full max-h-[85vh] object-contain" />
+    </div>
+
+    <button onclick="nextLightboxImage()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-3.5 rounded-full glass-pill z-50 hover:scale-110 transition-transform">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+  </div>
+
+
+  <!-- CORE JAVASCRIPT ENGINE -->
+  <script>
+    /* -------------------------------------------------------------------------- */
+    /* 1. STATE MANAGEMENT & TRANSLATIONS                                        */
+    /* -------------------------------------------------------------------------- */
+    let currentData = null;
+    let currentLang = localStorage.getItem('alfitech_lang') || 'en';
+    let featuredTimer = null;
+    let currentLightboxIndex = 0;
+    let currentLightboxScreenshots = [];
+
+    const translations = {
+      id: {
+        home: "Beranda",
+        about: "Tentang",
+        featured: "Pilihan Utama",
+        applications: "Aplikasi & Game Kami",
+        explore: "Jelajahi Aplikasi",
+        download: "UNDUH APK",
+        version: "Versi",
+        size: "Ukuran",
+        android: "Persyaratan Android",
+        features: "Fitur Unggulan",
+        supportTitle: "Dukungan Anda Sangat Berarti",
+        supportText: "Setiap aplikasi yang kami buat merupakan hasil dari waktu, ide, proses, dan usaha untuk menghadirkan sesuatu yang bermanfaat dan menyenangkan. Dukungan Anda membantu ALFITECH Studio terus mengembangkan aplikasi baru, memperbaiki karya yang sudah ada, dan memberikan pengalaman yang lebih baik di masa mendatang.",
+        supportSubtext: "Jika Anda menikmati karya kami dan ingin mendukung perjalanan ALFITECH Studio, dukungan sekecil apa pun sangat berarti bagi kami.",
+        supportAccount: "Dukungan via:",
+        noApps: "Belum ada aplikasi yang tersedia.",
+        back: "Kembali",
+        screenshots: "Tangkapan Layar",
+        heroSubtitle: "Pengalaman Digital Masa Depan",
+        heroDesc: "Jelajahi berbagai aplikasi & game futuristik yang dirancang dengan dedikasi tinggi dan fungsionalitas presisi oleh ALFITECH Studio.",
+        errorTitle: "Gagal Memuat Data ALFITECH",
+        errorDesc: "Pastikan berkas data/data.json tersedia dan formatnya valid.",
+        retry: "Coba Lagi",
+        additionalInfo: "Informasi Tambahan",
+        developer: "Pengembang",
+        genre: "Genre",
+        status: "Status",
+        lastUpdate: "Pembaruan Terakhir"
+      },
+      en: {
+        home: "Home",
+        about: "About",
+        featured: "Featured Highlights",
+        applications: "Our Applications & Games",
+        explore: "Explore Application",
+        download: "DOWNLOAD APK",
+        version: "Version",
+        size: "Size",
+        android: "Android Requirement",
+        features: "Key Features",
+        supportTitle: "Your Support Matters",
+        supportText: "Every app we build is a result of time, ideas, craftsmanship, and effort to deliver something useful and enjoyable. Your support helps ALFITECH Studio continue developing new apps, improving existing ones, and providing better experiences in the future.",
+        supportSubtext: "If you enjoy our work and wish to support ALFITECH Studio's journey, even the smallest contribution means the world to us.",
+        supportAccount: "Donate via:",
+        noApps: "No applications available yet.",
+        back: "Back",
+        screenshots: "Screenshots Showcase",
+        heroSubtitle: "Creating digital experiences with purpose.",
+        heroDesc: "Explore top-tier applications & games crafted with passion, futuristic UI, and high performance by ALFITECH Studio.",
+        errorTitle: "Unable to load ALFITECH data.",
+        errorDesc: "Please verify that data/data.json exists and contains valid JSON content.",
+        retry: "Try Again",
+        additionalInfo: "Additional Information",
+        developer: "Developer",
+        genre: "Genre",
+        status: "Status",
+        lastUpdate: "Last Update"
+      }
+    };
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. INITIALIZATION & DATA FETCHING                                         */
+    /* -------------------------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      setupHeaderScroll();
+      
+      // Handle Browser Navigation (Popstate)
+      window.addEventListener('popstate', () => {
+        renderCurrentRoute();
+      });
+    });
+
+    async function initApp() {
+      try {
+        const response = await fetch("data/data.json");
+        if (!response.ok) throw new Error("Network response failed");
+        currentData = await response.json();
+        
+        updateBranding();
+        updateLanguageUI();
+        renderCurrentRoute();
+      } catch (error) {
+        console.error("Error loading ALFITECH data:", error);
+        renderErrorState();
+      }
+    }
+
+    function updateBranding() {
+      if (!currentData) return;
+      const studioName = currentData.studio?.nama || "ALFITECH Studio";
+      document.getElementById('header-studio-name').innerText = studioName;
+      document.getElementById('footer-studio-name').innerText = studioName;
+      document.getElementById('footer-copy-name').innerText = studioName;
+
+      if (currentData.studio?.deskripsi) {
+        document.getElementById('footer-tagline').innerText = currentData.studio.deskripsi;
+      }
+
+      if (currentData.website?.tahun) {
+        document.getElementById('footer-year').innerText = currentData.website.tahun;
+      } else {
+        document.getElementById('footer-year').innerText = new Date().getFullYear();
+      }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. ROUTING & STATE CONTROLLER                                            */
+    /* -------------------------------------------------------------------------- */
+    function renderCurrentRoute() {
+      if (!currentData) return;
+      
+      const params = new URLSearchParams(window.location.search);
+      const appId = params.get('app');
+      const hash = window.location.hash;
+
+      if (appId) {
+        renderAppDetailView(appId);
+      } else if (hash === '#about') {
+        renderAboutView();
+      } else {
+        renderHomeView();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setupScrollObserver();
+    }
+
+    function navigateToHome(e) {
+      if (e) e.preventDefault();
+      if (featuredTimer) clearInterval(featuredTimer);
+      history.pushState(null, '', window.location.pathname);
+      renderHomeView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setupScrollObserver();
+    }
+
+    function navigateToAbout(e) {
+      if (e) e.preventDefault();
+      if (featuredTimer) clearInterval(featuredTimer);
+      history.pushState(null, '', window.location.pathname + '#about');
+      renderAboutView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setupScrollObserver();
+    }
+
+    function navigateToDetail(appId) {
+      if (featuredTimer) clearInterval(featuredTimer);
+      history.pushState(null, '', `?app=${appId}`);
+      renderAppDetailView(appId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setupScrollObserver();
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. LANGUAGE SYSTEM                                                        */
+    /* -------------------------------------------------------------------------- */
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'id' : 'en';
+      localStorage.setItem('alfitech_lang', currentLang);
+      updateLanguageUI();
+      renderCurrentRoute();
+    }
+
+    function updateLanguageUI() {
+      const t = translations[currentLang];
+      
+      document.getElementById('nav-home').innerText = t.home;
+      document.getElementById('nav-about').innerText = t.about;
+      document.getElementById('footer-nav-home').innerText = t.home;
+      document.getElementById('footer-nav-about').innerText = t.about;
+
+      const indicatorEn = document.getElementById('lang-indicator-en');
+      const indicatorId = document.getElementById('lang-indicator-id');
+
+      if (currentLang === 'en') {
+        indicatorEn.className = "text-brand-400 font-bold";
+        indicatorId.className = "text-slate-500 font-normal";
+      } else {
+        indicatorEn.className = "text-slate-500 font-normal";
+        indicatorId.className = "text-brand-400 font-bold";
+      }
+    }
+
+    function getAppText(app, field) {
+      if (currentLang === 'en' && app[`${field}_en`]) {
+        return app[`${field}_en`];
+      }
+      return app[field] || '';
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. HOME VIEW RENDERING                                                   */
+    /* -------------------------------------------------------------------------- */
+    function renderHomeView() {
+      const t = translations[currentLang];
+      const main = document.getElementById('app-content');
+      
+      const publishedApps = (currentData.apps || []).filter(a => a.published === true);
+      const featuredApps = publishedApps.filter(a => a.featured === true);
+
+      main.innerHTML = `
+        <div class="fade-enter fade-enter-active">
+          
+          <!-- HERO SECTION WITH HIGH-TECH 3D MOTIONS -->
+          <section class="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-4 pb-16">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              <!-- Left: Hero Text & Interactive Badges -->
+              <div class="lg:col-span-7 z-10 text-center lg:text-left">
+                
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-pill border border-brand-400/40 text-brand-400 text-xs font-bold mb-6 tracking-wide uppercase shadow-lg shadow-brand-500/10 float-fast">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-400 animate-ping"></span>
+                  ${currentData.studio?.nama || 'ALFITECH Studio'}
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-6">
+                  ${t.heroSubtitle.split(' ')[0]} 
+                  <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-brand-cyan to-brand-violet">
+                    ${t.heroSubtitle.split(' ').slice(1).join(' ')}
+                  </span>
+                </h1>
+                
+                <p class="text-slate-300 text-base sm:text-xl max-w-2xl mx-auto lg:mx-0 mb-10 font-light leading-relaxed">
+                  ${t.heroDesc}
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                  <a href="#applications-section" class="relative group px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-500 via-brand-cyan to-brand-violet text-white font-bold text-sm shadow-xl shadow-brand-500/25 hover:shadow-brand-400/50 hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-2">
+                      <span>${t.applications}</span>
+                      <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                    <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                  </a>
+
+                  <a href="#" onclick="navigateToAbout(event)" class="px-8 py-4 rounded-2xl glass-pill text-white font-semibold text-sm hover:bg-white/10 hover:border-brand-400/40 hover:scale-105 transition-all duration-300">
+                    ${t.about}
+                  </a>
+                </div>
+
+              </div>
+
+              <!-- Right: 3D Holographic Kinetic Object Visualizer -->
+              <div class="lg:col-span-5 relative flex items-center justify-center perspective-1000 min-h-[360px] lg:min-h-[460px]">
+                
+                <!-- Main Rotating Hologram Container -->
+                <div class="w-72 h-72 sm:w-96 sm:h-96 relative transform-style-3d rotate-3d-slow flex items-center justify-center">
+                  
+                  <!-- Outer Orbital Ring -->
+                  <div class="absolute inset-0 rounded-full border-2 border-dashed border-brand-400/50 animate-spin" style="animation-duration: 25s;"></div>
+                  
+                  <!-- Middle Cyan Counter Ring -->
+                  <div class="absolute w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-brand-cyan/60 transform rotate-45 float-slow"></div>
+
+                  <!-- 3D Glass Layer 1 (Center Cube) -->
+                  <div class="absolute w-44 h-44 sm:w-56 sm:h-56 glass-card rounded-3xl transform rotate-12 translate-z-10 border border-white/20 float-slow flex items-center justify-center shadow-2xl">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-400/80 via-brand-cyan/80 to-brand-violet/80 flex items-center justify-center shadow-xl animate-pulse">
+                      <!-- Holographic Emblem -->
+                      <svg class="w-12 h-12 text-white" viewBox="0 0 100 100" fill="none">
+                        <path d="M50 14L82 74H65L50 44L35 74H18L50 14Z" fill="currentColor" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Floating Floating Orb Accents -->
+                  <div class="absolute -top-6 -right-4 w-16 h-16 glass-pill rounded-2xl float-reverse flex items-center justify-center shadow-2xl border border-brand-cyan/40">
+                    <span class="text-2xl animate-bounce">⚡</span>
+                  </div>
+
+                  <div class="absolute -bottom-8 -left-6 w-20 h-20 glass-pill rounded-2xl float-slow flex items-center justify-center shadow-2xl border border-brand-violet/40" style="animation-delay: -2s;">
+                    <span class="text-3xl">🎮</span>
+                  </div>
+
+                  <div class="absolute top-1/2 -right-10 w-12 h-12 glass-pill rounded-xl float-fast flex items-center justify-center shadow-xl border border-brand-400/40">
+                    <span class="text-xl">✨</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FEATURED HIGHLIGHTS CAROUSEL -->
+          ${featuredApps.length > 0 ? renderFeaturedCarousel(featuredApps) : ''}
+
+          <!-- OUR APPLICATIONS SECTION -->
+          <section id="applications-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+              <div class="inline-flex items-center gap-2 text-brand-400 text-xs font-bold tracking-widest uppercase mb-2">
+                <span>✦</span> <span>ALFITECH CREATIONS</span> <span>✦</span>
+              </div>
+              <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+                ${t.applications}
+              </h2>
+              <div class="w-24 h-1.5 bg-gradient-to-r from-brand-400 via-brand-cyan to-brand-violet mx-auto rounded-full"></div>
+            </div>
+
+            ${publishedApps.length > 0 
+              ? `<div class="space-y-20">${publishedApps.map((app, index) => renderProductShowcaseItem(app, index)).join('')}</div>`
+              : `<div class="text-center py-16 text-slate-500">${t.noApps}</div>`
+            }
+          </section>
+
+          <!-- DONATION SECTION -->
+          ${renderDonationSection()}
+        </div>
+      `;
+
+      if (featuredApps.length > 1) {
+        initCarousel(featuredApps.length);
+      }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. FEATURED CAROUSEL (SHOWCASE ONLY - NON-CLICKABLE)                     */
+    /* -------------------------------------------------------------------------- */
+    function renderFeaturedCarousel(featuredApps) {
+      const t = translations[currentLang];
+      return `
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 reveal-on-scroll">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-brand-400 animate-ping"></span>
+              <h2 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wider">${t.featured}</h2>
+            </div>
+            <span class="text-xs text-slate-500 font-semibold uppercase tracking-widest">Showcase Only</span>
+          </div>
+
+          <div class="relative glass-card rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <!-- Scanning Line Effect -->
+            <div class="scan-line"></div>
+
+            <div id="featured-track" class="relative min-h-[320px] sm:min-h-[420px]">
+              ${featuredApps.map((app, i) => `
+                <div class="carousel-slide absolute inset-0 w-full h-full flex flex-col justify-end p-6 sm:p-14 ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}" data-slide="${i}">
+                  
+                  <!-- Banner with Motion Scale Effect -->
+                  <div class="absolute inset-0 z-0">
+                    ${app.banner ? `
+                      <img src="${app.banner}" alt="${app.nama}" class="w-full h-full object-cover filter brightness-50 contrast-125 transform scale-105 hover:scale-110 transition-transform duration-1000" onerror="this.style.display='none'" />
+                    ` : ''}
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/70 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-dark-base via-dark-base/60 to-transparent"></div>
+                  </div>
+
+                  <!-- Content Container -->
+                  <div class="relative z-10 max-w-2xl">
+                    <div class="flex items-center gap-4 mb-3">
+                      ${app.icon ? `<img src="${app.icon}" alt="${app.nama}" class="w-14 h-14 rounded-2xl border border-white/20 shadow-xl object-cover" onerror="this.style.display='none'" />` : ''}
+                      <div>
+                        <h3 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">${app.nama}</h3>
+                        ${app.kategori ? `<span class="text-xs font-bold text-brand-400 tracking-widest uppercase bg-brand-400/10 px-3 py-1 rounded-full border border-brand-400/20">${app.kategori}</span>` : ''}
+                      </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm sm:text-base line-clamp-2 mb-4 font-light leading-relaxed">
+                      ${getAppText(app, 'deskripsiSingkat') || getAppText(app, 'deskripsi')}
+                    </p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Dots Indicator -->
+            ${featuredApps.length > 1 ? `
+              <div class="absolute bottom-6 right-6 z-20 flex items-center gap-2">
+                ${featuredApps.map((_, i) => `
+                  <button onclick="setCarouselSlide(${i})" class="carousel-dot w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all ${i === 0 ? 'w-8 bg-brand-400' : ''}" data-dot="${i}"></button>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </section>
+      `;
+    }
+
+    let activeSlide = 0;
+    function initCarousel(totalSlides) {
+      if (featuredTimer) clearInterval(featuredTimer);
+      featuredTimer = setInterval(() => {
+        activeSlide = (activeSlide + 1) % totalSlides;
+        setCarouselSlide(activeSlide);
+      }, 6000);
+    }
+
+    function setCarouselSlide(index) {
+      activeSlide = index;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('opacity-0', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.className = "carousel-dot w-8 h-3 rounded-full bg-brand-400 transition-all shadow-lg shadow-brand-400/50";
+        } else {
+          dot.className = "carousel-dot w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all";
+        }
+      });
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 7. PRODUCT SHOWCASE ITEMS (ALTERNATING LAYOUT)                            */
+    /* -------------------------------------------------------------------------- */
+    function renderProductShowcaseItem(app, index) {
+      const t = translations[currentLang];
+      const isEven = index % 2 === 0;
+      const desc = getAppText(app, 'deskripsiSingkat') || getAppText(app, 'deskripsi');
+
+      return `
+        <div class="glass-card rounded-3xl p-6 sm:p-10 transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal-on-scroll">
+          
+          <!-- IMAGE COLUMN -->
+          <div class="lg:col-span-6 ${isEven ? 'lg:order-1' : 'lg:order-2'}">
+            <div class="relative rounded-2xl overflow-hidden border border-white/10 group aspect-video bg-dark-base flex items-center justify-center shadow-2xl">
+              ${app.banner ? `
+                <img src="${app.banner}" alt="${app.nama}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100%\\' height=\\'100%\\' fill=\\'%230f172a\\'><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2364748b\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>${app.nama}</text></svg>';" />
+              ` : `
+                <div class="p-8 text-center">
+                  <span class="text-5xl mb-3 block animate-pulse">📱</span>
+                  <span class="text-sm text-slate-400 font-semibold tracking-wider">${app.nama}</span>
+                </div>
+              `}
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-base/90 via-transparent to-transparent opacity-70"></div>
+            </div>
+          </div>
+
+          <!-- CONTENT COLUMN -->
+          <div class="lg:col-span-6 ${isEven ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center">
+            
+            <div class="flex items-center gap-4 mb-4">
+              ${app.icon ? `
+                <img src="${app.icon}" alt="${app.nama}" class="w-16 h-16 rounded-2xl border border-white/20 shadow-xl object-cover hover:rotate-6 transition-transform duration-300" onerror="this.style.display='none'" />
+              ` : ''}
+              <div>
+                <h3 class="text-3xl font-extrabold text-white tracking-tight">${app.nama}</h3>
+                ${app.kategori ? `<span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-400/10 text-brand-400 border border-brand-400/20 mt-1">${app.kategori}</span>` : ''}
+              </div>
+            </div>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+              ${desc}
+            </p>
+
+            <!-- Technical Badges -->
+            <div class="flex flex-wrap gap-2.5 mb-8 text-xs font-medium text-slate-300">
+              ${app.versi ? `<span class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-1.5">🏷️ ${t.version}: ${app.versi}</span>` : ''}
+              ${app.ukuran ? `<span class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-1.5">📦 ${t.size}: ${app.ukuran}</span>` : ''}
+              ${app.android ? `<span class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-1.5">🤖 ${app.android}</span>` : ''}
+            </div>
+
+            <div>
+              <button onclick="navigateToDetail('${app.id}')" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-cyan hover:from-brand-400 hover:to-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-500/20 hover:shadow-brand-400/40 hover:scale-105 transition-all duration-300">
+                <span>${t.explore}</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8. APP DETAIL VIEW                                                        */
+    /* -------------------------------------------------------------------------- */
+    function renderAppDetailView(appId) {
+      const t = translations[currentLang];
+      const main = document.getElementById('app-content');
+      
+      const app = (currentData.apps || []).find(a => a.id === appId && a.published === true);
+
+      if (!app) {
+        main.innerHTML = `
+          <div class="max-w-4xl mx-auto px-4 py-20 text-center">
+            <h2 class="text-2xl font-bold text-white mb-4">Application Not Found</h2>
+            <button onclick="navigateToHome(event)" class="px-6 py-2.5 rounded-xl bg-brand-500 text-white font-medium">
+              ${t.back}
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const fullDesc = getAppText(app, 'deskripsi') || getAppText(app, 'deskripsiSingkat');
+
+      main.innerHTML = `
+        <div class="fade-enter fade-enter-active max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          
+          <!-- Back Button -->
+          <button onclick="navigateToHome(event)" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-pill text-slate-300 hover:text-white mb-8 transition-all hover:scale-105 text-sm font-semibold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            ${t.back}
+          </button>
+
+          <!-- Main App Header Card -->
+          <div class="glass-card rounded-3xl p-6 sm:p-12 mb-8">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 text-center sm:text-left">
+              ${app.icon ? `
+                <img src="${app.icon}" alt="${app.nama}" class="w-28 h-28 rounded-3xl border border-white/20 shadow-2xl object-cover hover:rotate-3 transition-transform duration-300" onerror="this.style.display='none'" />
+              ` : ''}
+
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 mb-2">
+                  <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">${app.nama}</h1>
+                  ${app.kategori ? `<span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-400/10 text-brand-400 border border-brand-400/20">${app.kategori}</span>` : ''}
+                </div>
+
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 font-light">
+                  ${fullDesc}
+                </p>
+
+                <!-- Technical Specs Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+                  ${app.versi ? `
+                    <div class="glass-pill p-3.5 rounded-2xl border border-white/5">
+                      <span class="block text-xs text-slate-400 font-medium">${t.version}</span>
+                      <span class="font-bold text-white text-sm">${app.versi}</span>
+                    </div>
+                  ` : ''}
+                  ${app.ukuran ? `
+                    <div class="glass-pill p-3.5 rounded-2xl border border-white/5">
+                      <span class="block text-xs text-slate-400 font-medium">${t.size}</span>
+                      <span class="font-bold text-white text-sm">${app.ukuran}</span>
+                    </div>
+                  ` : ''}
+                  ${app.android ? `
+                    <div class="glass-pill p-3.5 rounded-2xl border border-white/5 col-span-2 sm:col-span-1">
+                      <span class="block text-xs text-slate-400 font-medium">${t.android}</span>
+                      <span class="font-bold text-white text-sm">${app.android}</span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- DOWNLOAD APK BUTTON -->
+                ${app.download ? `
+                  <a href="${app.download}" target="_blank" rel="noopener noreferrer" class="relative group inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-brand-500 via-brand-cyan to-brand-violet hover:from-brand-400 hover:to-brand-cyan text-white font-extrabold text-base shadow-2xl shadow-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto overflow-hidden">
+                    <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <span>${t.download}</span>
+                    <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                  </a>
+                ` : ''}
+
+              </div>
+            </div>
+          </div>
+
+          <!-- DYNAMIC EXTRA FIELDS (Flexible Schema Support) -->
+          ${renderExtraFields(app)}
+
+          <!-- FEATURES SECTION -->
+          ${app.fitur && app.fitur.length > 0 ? `
+            <div class="glass-card rounded-3xl p-6 sm:p-10 mb-8">
+              <h3 class="text-xl font-extrabold text-white mb-6 flex items-center gap-2.5">
+                <span class="text-brand-400 text-2xl">✨</span> ${t.features}
+              </h3>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${app.fitur.map(f => `
+                  <li class="flex items-start gap-3.5 glass-pill p-4 rounded-2xl border border-white/5 hover:border-brand-400/30 transition-colors">
+                    <svg class="w-5 h-5 text-brand-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-slate-200 text-sm font-medium leading-relaxed">${f}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          <!-- SCREENSHOT GALLERY -->
+          ${app.screenshots && app.screenshots.length > 0 ? `
+            <div class="glass-card rounded-3xl p-6 sm:p-10">
+              <h3 class="text-xl font-extrabold text-white mb-6 flex items-center gap-2.5">
+                <span class="text-brand-cyan text-2xl">📸</span> ${t.screenshots}
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                ${app.screenshots.map((imgUrl, i) => `
+                  <div onclick="openLightbox([${app.screenshots.map(s => `'${s}'`).join(',')}], ${i})" class="group cursor-pointer rounded-2xl overflow-hidden border border-white/10 aspect-video relative bg-dark-base shadow-lg">
+                    <img src="${imgUrl}" alt="Screenshot ${i + 1}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.parentElement.style.display='none'" />
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <svg class="w-8 h-8 text-white transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+        </div>
+      `;
+    }
+
+    /* Render extra/custom fields if present in JSON */
+    function renderExtraFields(app) {
+      const t = translations[currentLang];
+      const standardKeys = ['id', 'nama', 'kategori', 'deskripsiSingkat', 'deskripsi', 'icon', 'banner', 'screenshots', 'versi', 'ukuran', 'android', 'fitur', 'download', 'featured', 'published', 'nama_en', 'deskripsi_en', 'deskripsiSingkat_en'];
+      
+      const extraEntries = Object.entries(app).filter(([key, val]) => !standardKeys.includes(key) && val !== null && val !== undefined && val !== '');
+      
+      if (extraEntries.length === 0) return '';
+
+      return `
+        <div class="glass-card rounded-3xl p-6 sm:p-8 mb-8">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <span class="text-brand-violet">ℹ️</span> ${t.additionalInfo}
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            ${extraEntries.map(([key, val]) => `
+              <div class="glass-pill p-3.5 rounded-xl border border-white/5">
+                <span class="block text-xs text-slate-400 capitalize">${t[key] || key}</span>
+                <span class="font-bold text-white text-sm">${val}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 9. ABOUT VIEW                                                             */
+    /* -------------------------------------------------------------------------- */
+    function renderAboutView() {
+      const t = translations[currentLang];
+      const main = document.getElementById('app-content');
+      const studio = currentData.studio || {};
+
+      main.innerHTML = `
+        <div class="fade-enter fade-enter-active max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          
+          <div class="text-center mb-12">
+            <!-- 3D Kinetic Logo in About -->
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-brand-400 via-brand-cyan to-brand-violet p-[2px] shadow-2xl float-slow">
+              <div class="w-full h-full bg-dark-base rounded-[22px] flex items-center justify-center">
+                <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 14L82 74H65L50 44L35 74H18L50 14Z" fill="url(#about-logo-grad)" />
+                  <defs>
+                    <linearGradient id="about-logo-grad" x1="18" y1="14" x2="82" y2="74" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#10b981" />
+                      <stop offset="0.5" stop-color="#06b6d4" />
+                      <stop offset="1" stop-color="#8b5cf6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">${studio.nama || 'ALFITECH Studio'}</h1>
+            <p class="text-brand-400 text-xs font-bold tracking-widest uppercase mb-6">${t.about}</p>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 sm:p-12 space-y-6 text-slate-300 leading-relaxed text-base sm:text-lg font-light shadow-2xl">
+            <p>${studio.deskripsi || t.heroDesc}</p>
+            <div class="pt-6 border-t border-slate-800 text-sm text-slate-400">
+              <p>${t.supportSubtext}</p>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 10. DONATION SECTION WITH SINGLE DIRECT DONATION LINK                      */
+    /* -------------------------------------------------------------------------- */
+    function renderDonationSection() {
+      const t = translations[currentLang];
+
+      return `
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 reveal-on-scroll">
+          <div class="relative rounded-3xl overflow-hidden glass-card border border-brand-400/40 p-8 sm:p-16 text-center shadow-2xl">
+            
+            <!-- Scanning Light Sweep -->
+            <div class="scan-line"></div>
+
+            <!-- Ambient Emerald Glows -->
+            <div class="absolute -top-28 -left-28 w-80 h-80 bg-brand-400/25 rounded-full blur-3xl pointer-events-none pulse-glow"></div>
+            <div class="absolute -bottom-28 -right-28 w-80 h-80 bg-brand-cyan/25 rounded-full blur-3xl pointer-events-none pulse-glow" style="animation-delay: -2.5s;"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto">
+              
+              <!-- 3D Floating Diamond Icon -->
+              <div class="w-20 h-20 mx-auto mb-8 glass-pill rounded-3xl flex items-center justify-center border border-brand-400/50 shadow-2xl float-slow">
+                <span class="text-4xl animate-pulse">💎</span>
+              </div>
+
+              <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6 leading-tight">
+                ${t.supportTitle}
+              </h2>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+                ${t.supportText}
+              </p>
+
+              <p class="text-xs sm:text-sm text-slate-400 mb-8 font-light">
+                ${t.supportSubtext}
+              </p>
+
+              <!-- TOMBOL TUNGGAL DONASI DENGAN 1 LINK (Ganti href="https://trakteer.id/Alfitech_app/tip" dengan link asli Anda) -->
+              <div class="flex justify-center">
+                <a href="https://trakteer.id/Alfitech_app/tip" target="_blank" rel="noopener noreferrer" class="relative group inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-brand-500 via-brand-cyan to-brand-violet hover:from-brand-400 hover:to-brand-cyan text-white font-black text-lg shadow-2xl shadow-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden tracking-wider">
+                  <span class="text-xl">❤️</span>
+                  <span>DONASI</span>
+                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  <span class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 11. LIGHTBOX HANDLERS                                                     */
+    /* -------------------------------------------------------------------------- */
+    function openLightbox(screenshots, index) {
+      currentLightboxScreenshots = screenshots;
+      currentLightboxIndex = index;
+
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+
+      img.src = currentLightboxScreenshots[currentLightboxIndex];
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function prevLightboxImage() {
+      if (currentLightboxScreenshots.length === 0) return;
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxScreenshots.length) % currentLightboxScreenshots.length;
+      document.getElementById('lightbox-img').src = currentLightboxScreenshots[currentLightboxIndex];
+    }
+
+    function nextLightboxImage() {
+      if (currentLightboxScreenshots.length === 0) return;
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxScreenshots.length;
+      document.getElementById('lightbox-img').src = currentLightboxScreenshots[currentLightboxIndex];
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 12. ERROR STATE                                                           */
+    /* -------------------------------------------------------------------------- */
+    function renderErrorState() {
+      const t = translations[currentLang];
+      const main = document.getElementById('app-content');
+      
+      main.innerHTML = `
+        <div class="min-h-[60vh] flex items-center justify-center px-4 text-center">
+          <div class="glass-card p-8 sm:p-12 rounded-3xl max-w-md border border-red-500/30 shadow-2xl">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-500/20 text-red-400 flex items-center justify-center text-3xl font-bold">
+              ⚠️
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">${t.errorTitle}</h2>
+            <p class="text-slate-400 text-sm mb-6">${t.errorDesc}</p>
+            <button onclick="initApp()" class="px-6 py-3 rounded-xl bg-brand-500 text-white font-semibold text-sm hover:bg-brand-400 transition-all shadow-lg">
+              ${t.retry}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 13. UI ANIMATION OBSERVERS                                                */
+    /* -------------------------------------------------------------------------- */
+    function setupHeaderScroll() {
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          header.classList.add('py-2.5', 'shadow-2xl');
+          header.classList.remove('py-4');
+        } else {
+          header.classList.add('py-4');
+          header.classList.remove('py-2.5', 'shadow-2xl');
+        }
+      });
+    }
+
+    function setupScrollObserver() {
+      setTimeout(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+      }, 100);
+    }
+  </script>
+</body>
+</html>
+```
