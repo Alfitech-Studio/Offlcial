@@ -1,29 +1,36 @@
 {
   "studio": {
-    "name": "ALFITECH Studio",
-    "type": "Game & App Development Studio",
-    "description": "Studio pengembang game dan aplikasi digital."
+    "nama": "ALFITECH Studio",
+    "deskripsi": "Studio pengembang aplikasi dan pengalaman digital."
   },
+
+  "website": {
+    "tahun": "2026",
+    "donasi": "ALFITECH"
+  },
+
   "apps": [
     {
       "id": "senter",
-      "name": "Senter",
-      "packageName": "com.alfitech.flashlight",
-      "developer": "ALFITECH Studio",
-      "category": "Alat",
-      "status": "released",
-      "platform": "Android",
-      "version": "1.0.0",
-      "size": "5,6 MB",
-      "offline": true,
-      "requiresLogin": false,
+      "nama": "Senter",
+      "kategori": "Utility",
+      "deskripsiSingkat": "Senter offline sederhana dengan 10 mode kedip.",
+      "deskripsi": "Senter adalah aplikasi flashlight sederhana yang dilengkapi dengan 10 mode kedip untuk berbagai kebutuhan pencahayaan. Aplikasi ini dirancang agar ringan, cepat, dan mudah digunakan tanpa memerlukan koneksi internet.",
 
-      "about": {
-        "title": "Tentang Senter",
-        "description": "Senter offline sederhana dengan 10 mode kedip.\n\nSenter adalah aplikasi flashlight sederhana yang dilengkapi dengan 10 mode kedip untuk berbagai kebutuhan pencahayaan.\n\nAplikasi ini dirancang agar ringan, cepat, dan mudah digunakan tanpa memerlukan koneksi internet."
-      },
+      "icon": "assets/apps/senter/icon.png",
+      "banner": "assets/apps/senter/banner.jpg",
 
-      "features": [
+      "screenshots": [
+        "assets/apps/senter/screenshot-01.jpg",
+        "assets/apps/senter/screenshot-02.jpg",
+        "assets/apps/senter/screenshot-03.jpg"
+      ],
+
+      "versi": "1.0.0",
+      "ukuran": "5,6 MB",
+      "android": "Android 8.0+",
+
+      "fitur": [
         "Nyalakan dan matikan senter dengan satu sentuhan",
         "10 mode kedip senter",
         "Bekerja sepenuhnya offline",
@@ -32,24 +39,10 @@
         "Tidak memerlukan login"
       ],
 
-      "suitableFor": [
-        "Keadaan darurat",
-        "Mati lampu",
-        "Aktivitas malam hari",
-        "Kebutuhan pencahayaan lainnya"
-      ],
+      "download": "https://drive.usercontent.google.com/download?id=1gjc_miFZzYSJ2QcmaG_HZK3eCmWzZ3kh&export=download&confirm=t&uuid=6ec71849-7c40-4a16-",
 
-      "descriptionEnd": "Aplikasi ini cocok digunakan saat keadaan darurat, mati lampu, aktivitas malam hari, atau kebutuhan pencahayaan lainnya.",
-
-      "assets": {
-        "icon": "assets/apps/senter/icon.png",
-        "banner": "assets/apps/senter/banner.png",
-        "screenshots": []
-      },
-
-      "links": {
-        "apkpure": "https://drive.usercontent.google.com/download?id=1gjc_miFZzYSJ2QcmaG_HZK3eCmWzZ3kh&export=download&confirm=t&uuid=6ec71849-7c40-4a16-8960-fa2779e34948"
-      }
+      "featured": true,
+      "published": true
     }
   ]
 }
